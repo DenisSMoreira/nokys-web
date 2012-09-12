@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>Bunisses</title>
+            <style>
+                body {
+                    font-size: 100%;
+                    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    font-size: 0.605em;
+                    font-weight: 400;
+                    color: white !important;
+                }
+
+                .jqplot-target{
+                    color: white !important;
+                }
+                .jqplot-table-legend{
+                    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    color: black !important;
+                    font-size: 1.205em;
+                    font-weight: 400;
+                }
+                .jqplot-yaxis-tick{
+                   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    color: black !important;
+                    font-size: 1.205em;
+                    font-weight: 400;
+                }
+
+            </style>
+        </f:facet>
+    </h:head>
+
+
+    <h:body>
+        <f:view contentType="text/html">
+            <h:form id="tabMenu"> 
+
+                <p:tabMenu activeIndex="0" id="tabMenu" style="margin-top: -11px !important; margin-left: -11px!important; width:100%" >  
+                    <p:menuitem value="Tela Principal" url="welcomePrimefaces.xhtml" icon="ui-icon-star"/>  
+                    <p:menuitem value="Demos" url="index.xhtml" icon="ui-icon-search" />  
+                    <p:menuitem value="Documentation" url="/ui/tabMenuDocumentation.jsf" icon="ui-icon-document"/>  
+                    <p:menuitem value="Support" url="/ui/tabMenuSupport.jsf" icon="ui-icon-wrench"/>  
+                    <p:menuitem value="Social" url="/ui/tabMenuSocial.jsf" disabled="true"  icon="ui-icon-person" />  
+                </p:tabMenu>  
+
+            </h:form>
+
+        </f:view>
+    </h:body>  
+
+    <h:body>  
+        <f:view contentType="text/html">
+            <h:form id="form">
+
+                <h:panelGrid columns="1" style="margin-top: -5px !important; margin-left: -11px!important; width:100%">  
+                    <p:panel  footer="Desenvolvindo por: Denis Soares Moreira">  
+                         <p:commandButton type="button" value="Resetar Zoom" style="float: right;" icon="ui-icon-cancel" onclick="chart.resetZoom()"/>
+                       <br/>
+                        <p:lineChart value="#{chartBean.linearModel}"  legendPosition="e" zoom="true" animate="true"  
+                                     title="Vendas nos ultimos meses" minY="0" maxY="200" widgetVar="chart"/>   <br/>
+                        <br/>
+                        <p:fieldset legend="Clientes Cadastrados Hoje" toggleable="true"  toggleSpeed="500"  >
+
+                            <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" rowKey="#{car.model}" paginator="true" rows="10"  
+                                         selection="#{tableBean.selectedCars}" selectionMode="multiple" filteredValue="#{tableBean.filteredCars}" >
+
+                                <f:facet name="header">
+                                   Selecione os clientes e clique em "Visualizar" para ver os detalhes do clientes
+                                </f:facet>
+
+                                <p:column headerText="Empresa" sortBy="#{car.model}" filterBy="#{car.model}" id="model">  
+                                    #{car.model}  
+                                </p:column>  
+
+                                <p:column headerText="Nascimento" sortBy="#{car.year}" filterBy="#{car.year}" id="year">  
+                                    #{car.year}  
+                                </p:column>  
+
+                                <p:column headerText="Filial" sortBy="#{car.manufacturer}" filterBy="#{car.manufacturer}"  id="manufacturer">  
+                                    #{car.manufacturer}  
+                                </p:column>  
+
+                                <p:column headerText="Setor" sortBy="#{car.color}" filterBy="#{car.color}" id="color">  
+                                    #{car.color}"  
+                                </p:column> 
+
+                                <f:facet name="footer">
+                                    <p:commandButton value="Visualizar" icon="ui-icon-search" update=":form:display" oncomplete="carDialog.show()"/>
+                                </f:facet>
+                            </p:dataTable>
+
+
+                        </p:fieldset>  
+                    </p:panel>      
+                </h:panelGrid>  
+
+                <p:dialog header="Car Detail" widgetVar="carDialog"
+                          width="250" showEffect="explode" hideEffect="explode">
+
+                    <p:dataList id="display"
+                                value="#{tableBean.selectedCars}"
+                                var="selectedCar" type="definition">
+
+                        Model: #{selectedCar.model}, Year: #{selectedCar.year}      
+
+                    </p:dataList>
+                </p:dialog>
+            </h:form>
+        </f:view>
+    </h:body>
+
+</html>
+
