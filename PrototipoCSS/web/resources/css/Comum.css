@@ -1,0 +1,13 @@
+
+body {
+    font-size: 100% !important;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 0.600em !important;
+    font-weight: 400 !important;
+}
+
+.jqplot-table-legend{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 1.005em !important;
+    font-weight: 400 !important;
+}

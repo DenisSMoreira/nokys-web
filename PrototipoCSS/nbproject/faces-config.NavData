@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="TelaPrincipal.xhtml" x="53" y="282" zoom="true"/>
+        <Node id="*" x="263" y="179" zoom="true"/>
+        <Node id="Menu.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="Template.xhtml" x="162" y="119" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>
