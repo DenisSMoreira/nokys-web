@@ -14,28 +14,16 @@
                 body {
                     font-size: 100%;
                     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                    font-size: 0.605em;
+                    font-size: 0.600em;
                     font-weight: 400;
-                    color: white !important;
                 }
 
-                .jqplot-target{
-                    color: white !important;
-                }
                 .jqplot-table-legend{
                     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                    color: black !important;
                     font-size: 1.205em;
                     font-weight: 400;
                 }
-                .jqplot-yaxis-tick{
-                   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                    color: black !important;
-                    font-size: 1.205em;
-                    font-weight: 400;
-                }
-
-            </style>
+             </style>
         </f:facet>
     </h:head>
 
@@ -61,10 +49,10 @@
         <f:view contentType="text/html">
             <h:form id="form">
 
-                <h:panelGrid columns="1" style="margin-top: -5px !important; margin-left: -11px!important; width:100%">  
+                <h:panelGrid columns="1" style="margin-left: -11px!important; width:100%">  
                     <p:panel  footer="Desenvolvindo por: Denis Soares Moreira">  
                          <p:commandButton type="button" value="Resetar Zoom" style="float: right;" icon="ui-icon-cancel" onclick="chart.resetZoom()"/>
-                       <br/>
+                       <br/> <br/>
                         <p:lineChart value="#{chartBean.linearModel}"  legendPosition="e" zoom="true" animate="true"  
                                      title="Vendas nos ultimos meses" minY="0" maxY="200" widgetVar="chart"/>   <br/>
                         <br/>
