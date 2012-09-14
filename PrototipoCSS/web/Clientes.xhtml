@@ -7,65 +7,134 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:f="http://java.sun.com/jsf/core">
 
-
+    
     <ui:define name="conteudo">
 
-                    <p:growl id="msgs" />  
+        <h:form>  
 
-                        <h:panelGrid columns="2" cellspacing="10" cellpadding="5" >  
+            <p:growl id="growl" sticky="true" showDetail="true"/>  
 
+            <p:wizard widgetVar="wiz"  
+                      flowListener="#{userWizard.onFlowProcess}">  
 
-                            <h:outputText value="Options: " />  
-                            <p:selectOneButton >  
-                                <f:selectItem itemLabel="Option 1" itemValue="1" />  
-                                <f:selectItem itemLabel="Option 2" itemValue="2" />  
-                                <f:selectItem itemLabel="Option 3" itemValue="3" />  
-                            </p:selectOneButton>
+                <p:tab id="personal" title="Dados Pessoais">  
 
-                            <h:outputText value="Options: " />  
-                            <p:selectCheckboxMenu value="#{inplaceBean.selectedMovies}" label="Movies" filter="true" filterText="Filter" filterMatchMode="startsWith" panelStyle="width:220px">  
-                                <f:selectItems value="#{inplaceBean.movies}" />  
-                            </p:selectCheckboxMenu>  
+                    <p:panel header="Detalhes do cliente">  
 
+                        <p:messages closable="true" />   
 
-                            <h:outputText value="Basic Input: " />  
-                            <p:inplace id="ajaxInplace" editor="true">  
-                                <p:inputText value="#{inplaceBean.text}"  
-                                             required="true" label="text"/>  
-                            </p:inplace>     
+                        <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
+                            <h:outputText value="Nome: *" />  
+                            <p:inputText required="false" label="Nome" requiredMessage="Campo 'Nome' de preenchimento obrigátorio."  
+                                         value="#{userWizard.user.firstname}" />  
 
-                            <h:outputText value="Ajax Inplace Editor: " />  
-                            <p:inplace id="ajaxInplace2" editor="true">  
-                                <p:inputText value="#{inplaceBean.text}"  
-                                             required="true" label="text"/>  
-                            </p:inplace>  
+                            <h:outputText value="Sobrenome: *" />  
+                            <p:inputText required="false" label="Sobrenome"  requiredMessage="Campo 'Sobrenome' de preenchimento obrigátorio."  
+                                         value="#{userWizard.user.lastname}" />  
 
-                            <h:outputText value="Select One (Dlbclick): "/>  
-                            <p:inplace id="selectableInplace" label="Cities" effectSpeed="fast" >  
-                                <p:selectOneMenu >  
-                                    <f:selectItem itemLabel="Select One" itemValue="" />  
-                                    <f:selectItem itemLabel="Option 1" itemValue="1" />  
-                                    <f:selectItem itemLabel="Option 2" itemValue="2" />  
-                                    <f:selectItem itemLabel="Option 3" itemValue="3" />  
-                                </p:selectOneMenu>  
-                            </p:inplace>  
+                            <h:outputText value="Idade: " />  
+                            <p:inputText value="#{userWizard.user.age}" />  
 
-                            <h:outputText value="Callback:" />  
-                            <p:rating stars="10" cancel="false" /> 
-
-                            <h:outputText value="Checkbox: "/>  
-                            <p:inplace id="checkboxInplace" label="Edit me" effect="none">  
-                                <p:selectManyCheckbox>  
-                                    <f:selectItem itemLabel="Option 1" itemValue="Option 1" />  
-                                    <f:selectItem itemLabel="Option 2" itemValue="Option 2" />  
-                                    <f:selectItem itemLabel="Option 3" itemValue="Option 3" />  
-                                </p:selectManyCheckbox>  
-                            </p:inplace>  
+                            <h:outputText value="Finalizar: " />  
+                            <p:selectBooleanCheckbox value="#{userWizard.skip}"></p:selectBooleanCheckbox>  
 
                         </h:panelGrid>  
-                        <p:separator />  
+                    </p:panel>  
+                </p:tab>  
 
-                        <p:commandButton value="Submit"   />  
+                <p:tab id="address" title="Endereço">  
+                    <p:panel header="Detalhes do enredeço">  
+
+                       <p:messages closable="true" />     
+
+                        <h:panelGrid columns="2" columnClasses="label, value">  
+                            <h:outputText value="Endereço: " />  
+                            <p:inputText value="#{userWizard.user.street}" />  
+
+                            <h:outputText value="CEP: " />  
+                            <p:inputText value="#{userWizard.user.postalCode}" />  
+
+                            <h:outputText value="Cidade: " />  
+                            <p:inputText value="#{userWizard.user.city}" />  
+
+                            <h:outputText value="Finalizar: " />  
+                            <p:selectBooleanCheckbox value="#{userWizard.skip}"></p:selectBooleanCheckbox> 
+                        </h:panelGrid>  
+                    </p:panel>  
+                </p:tab>  
+
+                <p:tab id="contact" title="Contato">  
+                    <p:panel header="INformação para Contato">  
+
+                       <p:messages closable="true" />   
+
+                        <h:panelGrid columns="2" columnClasses="label, value">  
+                            <h:outputText value="Email: *" />  
+                            <p:inputText required="true" label="Email"  
+                                         value="#{userWizard.user.email}" />  
+
+                            <h:outputText value="Telefone: " />  
+                            <p:inputText value="#{userWizard.user.phone}"/>  
+
+                            <h:outputText value="Informação Adcional: " />  
+                            <p:inputText value="#{userWizard.user.info}"/>  
+                        </h:panelGrid>  
+                    </p:panel>  
+                </p:tab>  
+
+                <p:tab id="confirm" title="Confirmação">  
+                    <p:panel header="Dados de Confirmação">  
+
+                        <h:panelGrid id="confirmation" columns="6">  
+                            <h:outputText value="Nome: " />  
+                            <h:outputText styleClass="outputLabel"  
+                                          value="#{userWizard.user.firstname}" />  
+
+                            <h:outputText value="Sobrenome: " />  
+                            <h:outputText  styleClass="outputLabel"  
+                                           value="#{userWizard.user.lastname}"/>  
+
+                            <h:outputText value="Idade: " />  
+                            <h:outputText styleClass="outputLabel"  
+                                          value="#{userWizard.user.age}" />  
+
+                            <h:outputText value="Endereço: " />  
+                            <h:outputText styleClass="outputLabel"  
+                                          value="#{userWizard.user.street}" />  
+
+                            <h:outputText value="CEP: " />  
+                            <h:outputText styleClass="outputLabel"  
+                                          value="#{userWizard.user.postalCode}" />  
+
+                            <h:outputText value="Cidade: " />  
+                            <h:outputText styleClass="outputLabel"  
+                                          value="#{userWizard.user.city}" />  
+
+                            <h:outputText value="Email: " />  
+                            <h:outputText styleClass="outputLabel"  
+                                          value="#{userWizard.user.email}" />  
+
+                            <h:outputText value="Telefone: " />  
+                            <h:outputText styleClass="outputLabel"  
+                                          value="#{userWizard.user.phone}"/>  
+
+                            <h:outputText value="Info: " />  
+                            <h:outputText styleClass="outputLabel"  
+                                          value="#{userWizard.user.info}" />  
+
+                            <h:outputText />  
+                            <h:outputText />  
+                        </h:panelGrid>  
+
+                        <p:commandButton value="Cadastrar" update="growl"   
+                                         actionListener="#{userWizard.save}"/>  
+
+                    </p:panel>  
+                </p:tab>  
+
+            </p:wizard>  
+
+        </h:form>  
 
     </ui:define>
 

@@ -48,12 +48,20 @@
                 </p:tabMenu>  
 
 
-                <h:panelGrid columns="1" style="margin-left: -11px!important; width:100%">  
-                    <p:panel  footer="Desenvolvindo por: Denis Soares Moreira">  
-                        <ui:insert name="conteudo"></ui:insert>
-                    </p:panel>
-                </h:panelGrid>
+                <h:panelGrid columns="1" style="margin-left: -11px!important; width:100%"> 
 
+                    <p:commandLink id="chartBtn" value="Denis Moreira" style="float: right" />  
+                  
+                    <p:overlayPanel id="chartPanel" for="chartBtn" hideEffect="fade"> 
+                         <h:outputText value="Nome Completo: " style="font-weight:bold;" /> <h:outputText value="Denis Soares Moreira" /><br/>
+                       <h:outputText value="Email: " style="font-weight:bold;" /> <h:outputText value="denis.soares.moreira@gmail" /><br/><br/>
+                        <p:commandButton value="Ver Perfil"   /> <p:commandButton value="Sair"   />
+                    </p:overlayPanel> 
+                       
+                </h:panelGrid>
+                <p:panel id="footer"  footer="Desenvolvindo por: Denis Soares Moreira">  
+                        <ui:insert name="conteudo"></ui:insert>
+                </p:panel>
             </h:form>
 
         </f:view>
