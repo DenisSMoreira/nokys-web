@@ -10,20 +10,17 @@
 
     <ui:define name="conteudo">
 
-        <h:panelGrid columns="1" cellspacing="10" cellpadding="5"  >  
+        <h:panelGrid columns="1"  cellspacing="10" cellpadding="5"  >  
 
             <h:form id="form">  
 
 
-                <p:dashboard id="board"  model="#{dashboardPrincipal.model}"  style="width: 980px;"  >  
+                <p:dashboard id="board"    model="#{dashboardPrincipal.model}"  style="width: 980px;"  >  
                     <p:ajax event="reorder" listener="#{dashboardPrincipal.handleReorder}" />  
 
                     <p:panel id="sports" header="Cadastrar"  style="width: 300px">   
                         <p:commandLink value="Clientes" action="#{dashboardCadastro.forwardClientes()}" ></p:commandLink><br />
                         <p:commandLink value="Fornecedores"></p:commandLink><br />
-                        <p:commandLink value="Produtos"></p:commandLink><br />
-                        <p:commandLink value="Categoria"></p:commandLink>
-                        <p:commandLink value="Categoria"></p:commandLink>
                     </p:panel>  
 
                     <p:panel id="finance" header="Lançamento" style="width: 300px;">  
@@ -37,17 +34,11 @@
                     <p:panel id="weather" header="Relátorio" style="width: 300px;">  
                         <p:commandLink value="Clientes"></p:commandLink><br />
                         <p:commandLink value="Fornecedores"></p:commandLink><br />
-                        <p:commandLink value="Produtos"></p:commandLink><br />
-                        <p:commandLink value="Categoria"></p:commandLink>
-                        <p:commandLink value="Categoria"></p:commandLink>
                     </p:panel>  
 
                     <p:panel id="politics" header="Gráficos" style="width: 300px;">  
                         <p:commandLink value="Clientes"></p:commandLink><br />
                         <p:commandLink value="Fornecedores"></p:commandLink><br />
-                        <p:commandLink value="Produtos"></p:commandLink><br />
-                        <p:commandLink value="Categoria"></p:commandLink>
-                        <p:commandLink value="Categoria"></p:commandLink>
                     </p:panel>  
                 </p:dashboard> 
 

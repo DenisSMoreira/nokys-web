@@ -9,15 +9,9 @@
 
 
     <ui:define name="conteudo">
-
         <h:panelGrid columns="1" cellspacing="10" cellpadding="5"  >  
-
             <h:form id="form">  
-
-
                 <p:dashboard id="board"  model="#{dashboardCadastro.model}"  style="width: 980px;"  >  
-                    
-
                     <p:panel id="cadastros" header="Cadastrar"  style="width: 300px">   
                         <p:commandLink value="Clientes" action="#{dashboardCadastro.forwardClientes()}" ></p:commandLink><br />
                         <p:commandLink value="Fornecedores"></p:commandLink><br />
@@ -25,15 +19,9 @@
                         <p:commandLink value="Categoria"></p:commandLink>
                         <p:commandLink value="Categoria"></p:commandLink>
                     </p:panel>  
- 
-                </p:dashboard> 
-
+               </p:dashboard> 
             </h:form>  
-
-
-
         </h:panelGrid>  
-
     </ui:define>
 
 </ui:composition>

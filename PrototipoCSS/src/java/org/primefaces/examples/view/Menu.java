@@ -31,6 +31,16 @@ public class Menu {
         activeIndex = "2";
         return "cadastros";
     }
+     
+     public String forwardGerenciamento(){
+        activeIndex = "3";
+        return "gerencimento";
+    }
+     
+     public String forwardFinanceiro(){
+        activeIndex = "4";
+        return "financeiro";
+    }
     /**
      * @return the activeIndex
      */

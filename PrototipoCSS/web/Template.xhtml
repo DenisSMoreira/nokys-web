@@ -35,8 +35,8 @@
                     <p:menuitem value="Tela Principal" action="#{menu.forwardTelaPrincipal()}" icon="ui-icon-home"   /> 
                     <p:menuitem value="Notícias" action="#{menu.forwardNoticias()}" icon="ui-icon-star"  />  
                     <p:menuitem value="Cadastros" action="#{menu.forwardCadastros()}" icon="ui-icon-person"    /> 
-                    <p:menuitem value="Gerencimento" url="/ui/tabMenuSocial.jsf"  icon="ui-icon-folder-collapsed" />  
-                    <p:menuitem value="Financeiro" url="/ui/tabMenuDocumentation.jsf" icon="ui-icon-document"/>  
+                    <p:menuitem value="Gerencimento" action="#{menu.forwardGerenciamento()}"  icon="ui-icon-folder-collapsed" />  
+                    <p:menuitem value="Financeiro" action="#{menu.forwardFinanceiro()}" icon="ui-icon-document"/>  
                     <p:menuitem value="Lançamentos" url="/ui/tabMenuDocumentation.jsf" icon="ui-icon-document"/>  
                     <p:menuitem value="Vendas" url="/ui/tabMenuDocumentation.jsf" icon="ui-icon-cart"/>  
                     <p:menuitem value="Relatórios" url="/ui/tabMenuDocumentation.jsf" icon="ui-icon-clipboard"/>  
@@ -59,7 +59,7 @@
                     </p:overlayPanel> 
                        
                 </h:panelGrid>
-                <p:panel id="footer"  footer="Desenvolvindo por: Denis Soares Moreira">  
+                <p:panel id="footer" footer="Desenvolvindo por: Denis Soares Moreira">  
                         <ui:insert name="conteudo"></ui:insert>
                 </p:panel>
             </h:form>

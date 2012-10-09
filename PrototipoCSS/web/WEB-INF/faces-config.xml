@@ -20,6 +20,14 @@
             <from-outcome>noticias</from-outcome>
             <to-view-id>/Noticias.xhtml</to-view-id>
         </navigation-case>
+          <navigation-case>
+            <from-outcome>financeiro</from-outcome>
+            <to-view-id>/Financeiro.xhtml</to-view-id>
+        </navigation-case>
+         <navigation-case>
+            <from-outcome>gerencimento</from-outcome>
+            <to-view-id>/Gerencimento.xhtml</to-view-id>
+        </navigation-case>
        <navigation-case>
             <from-outcome>telaPrincipal</from-outcome>
             <to-view-id>/TelaPrincipal.xhtml</to-view-id>
