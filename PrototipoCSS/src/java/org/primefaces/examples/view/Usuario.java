@@ -8,7 +8,7 @@ package org.primefaces.examples.view;
  *
  * @author dmoreira
  */
-public class User {
+public class Usuario {
     
     private String firstname;
     private String lastname;
@@ -21,7 +21,7 @@ public class User {
     private String phone;
     
     
-    public User() {
+    public Usuario() {
     }
 
     /**

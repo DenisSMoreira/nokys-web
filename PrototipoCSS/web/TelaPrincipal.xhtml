@@ -15,11 +15,11 @@
             <h:form id="form">  
 
 
-                <p:dashboard id="board"  model="#{dashboardBean.model}"  style="width: 980px;"  >  
-                    <p:ajax event="reorder" listener="#{dashboardBean.handleReorder}" />  
+                <p:dashboard id="board"  model="#{dashboardPrincipal.model}"  style="width: 980px;"  >  
+                    <p:ajax event="reorder" listener="#{dashboardPrincipal.handleReorder}" />  
 
                     <p:panel id="sports" header="Cadastrar"  style="width: 300px">   
-                        <p:commandLink value="Clientes" action="#{cadastroDash.forwardClientes()}" ></p:commandLink><br />
+                        <p:commandLink value="Clientes" action="#{dashboardCadastro.forwardClientes()}" ></p:commandLink><br />
                         <p:commandLink value="Fornecedores"></p:commandLink><br />
                         <p:commandLink value="Produtos"></p:commandLink><br />
                         <p:commandLink value="Categoria"></p:commandLink>

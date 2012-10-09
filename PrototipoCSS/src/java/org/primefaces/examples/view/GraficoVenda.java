@@ -6,13 +6,13 @@ import org.primefaces.model.chart.CartesianChartModel;
 import org.primefaces.model.chart.LineChartSeries;  
   
 @ManagedBean
-public class ChartBean implements Serializable {  
+public class GraficoVenda implements Serializable {  
   
  
   
     private CartesianChartModel linearModel;  
   
-    public ChartBean() {  
+    public GraficoVenda() {  
               createLinearModel();  
     }  
   

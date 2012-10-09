@@ -17,18 +17,18 @@ import org.primefaces.event.FlowEvent;
  * @author dmoreira
  */
 @ManagedBean
-public class UserWizard {
-    private User user = new User();  
+public class UsuarioWizard {
+    private Usuario user = new Usuario();  
       
     private boolean skip;  
       
-    private static final Logger logger = Logger.getLogger(UserWizard.class.getName());  
+    private static final Logger logger = Logger.getLogger(UsuarioWizard.class.getName());  
   
-    public User getUser() {  
+    public Usuario getUser() {  
         return user;  
     }  
   
-    public void setUser(User user) {  
+    public void setUser(Usuario user) {  
         this.user = user;  
     }  
       

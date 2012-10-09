@@ -1,8 +1,5 @@
 package org.primefaces.examples.view;
 
-
-import javax.faces.bean.ManagedBean;
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -13,14 +10,14 @@ import javax.faces.bean.ManagedBean;
  * @author dmoreira
  */
 
-@ManagedBean
-public class Car {
+
+public class Cliente {
     private String model;
     private int year;
     private String manufacturer;
     private String color;
 
-   public Car(String randomModel, int randomYear, String randomManufacturer, String randomColor) {
+   public Cliente(String randomModel, int randomYear, String randomManufacturer, String randomColor) {
         model = randomColor;
         year = randomYear;
         manufacturer = randomManufacturer;

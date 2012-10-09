@@ -6,27 +6,27 @@ import java.util.UUID;
 import javax.faces.bean.ManagedBean;
 
 
-@ManagedBean(name="tableBean")
-public class TableBean {
+@ManagedBean
+public class TabelaClientes {
 
     private final static String[] colors;
     private final static String[] manufacturers;
-    private Car[] selectedCars;
-    private List<Car> carsSmall;
-    private List<Car> filteredCars;
+    private Cliente[] selectedCars;
+    private List<Cliente> carsSmall;
+    private List<Cliente> filteredCars;
 
     static {
         colors = new String[10];
-        colors[0] = "Black";
-        colors[1] = "White";
-        colors[2] = "Green";
-        colors[3] = "Red";
-        colors[4] = "Blue";
-        colors[5] = "Orange";
+        colors[0] = "Denis";
+        colors[1] = "Tiago";
+        colors[2] = "Juliana";
+        colors[3] = "Carlos";
+        colors[4] = "Alberto";
+        colors[5] = "Pedro";
         colors[6] = "Silver";
-        colors[7] = "Yellow";
+        colors[7] = "Joao";
         colors[8] = "Brown";
-        colors[9] = "Maroon";
+        colors[9] = "Maron";
 
         manufacturers = new String[10];
         manufacturers[0] = "Mercedes";
@@ -41,14 +41,14 @@ public class TableBean {
         manufacturers[9] = "Ford";
     }
 
-    public TableBean() {
-        carsSmall = new ArrayList<Car>();
+    public TabelaClientes() {
+        carsSmall = new ArrayList<Cliente>();
         populateRandomCars(carsSmall, 50);
     }
 
-    private void populateRandomCars(List<Car> list, int size) {
+    private void populateRandomCars(List<Cliente> list, int size) {
         for (int i = 0; i < size; i++) {
-            list.add(new Car(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
+            list.add(new Cliente(getRandomModel(), getRandomYear(), getRandomManufacturer(), getRandomColor()));
         }
     }
 
@@ -68,32 +68,31 @@ public class TableBean {
         return UUID.randomUUID().toString().substring(0, 8);
     }
 
-
    
-    public List<Car> getCarsSmall() {
+    public List<Cliente> getCarsSmall() {
         return this.carsSmall;
     }
 
     /**
      * @return the selectedCars
      */
-    public Car[] getSelectedCars() {
+    public Cliente[] getSelectedCars() {
         return selectedCars;
     }
 
     /**
      * @param selectedCars the selectedCars to set
      */
-    public void setSelectedCars(Car[] selectedCars) {
+    public void setSelectedCars(Cliente[] selectedCars) {
         this.selectedCars = selectedCars;
     }
     
     
-    public List<Car> getFilteredCars() {  
+    public List<Cliente> getFilteredCars() {  
         return filteredCars;  
     }  
   
-    public void setFilteredCars(List<Car> filteredCars) {  
+    public void setFilteredCars(List<Cliente> filteredCars) {  
         this.filteredCars = filteredCars;  
     }  
 }

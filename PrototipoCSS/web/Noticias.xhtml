@@ -12,16 +12,16 @@
       
             <p:commandButton type="button" value="Resetar Zoom" style="float: right;" icon="ui-icon-cancel" onclick="chart.resetZoom()"/>
             <br/> <br/>
-            <p:lineChart value="#{chartBean.linearModel}"  legendPosition="e" zoom="true" animate="true"  
+            <p:lineChart value="#{graficoVenda.linearModel}"  legendPosition="e" zoom="true" animate="true"  
                          title="Vendas nos ultimos meses" minY="0" maxY="200" widgetVar="chart"/>   <br/>
             <br/>
             <p:fieldset legend="Clientes Cadastrados Hoje" toggleable="true"  toggleSpeed="500"  >
 
-                <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}" rowKey="#{car.model}" paginator="true" rows="10"  
-                             selection="#{tableBean.selectedCars}" selectionMode="multiple" filteredValue="#{tableBean.filteredCars}" >
+                <p:dataTable id="cars" var="car" value="#{tabelaClientes.carsSmall}" rowKey="#{car.model}" paginator="true" rows="10"  
+                             selection="#{tabelaClientes.selectedCars}" selectionMode="multiple" filteredValue="#{tabelaClientes.filteredCars}" >
 
                     <f:facet name="header">
-                        Selecione os clientes e clique em "Visualizar" para ver os detalhes do clientes
+                        Selecione os clientes e clique em "Visualizar" para ver mais detalhes
                     </f:facet>
 
                     <p:column headerText="Empresa" sortBy="#{car.model}" filterBy="#{car.model}" id="model">  
@@ -37,7 +37,7 @@
                     </p:column>  
 
                     <p:column headerText="Setor" sortBy="#{car.color}" filterBy="#{car.color}" id="color">  
-                        #{car.color}"  
+                        #{car.color}  
                     </p:column> 
 
                     <f:facet name="footer">
@@ -49,14 +49,14 @@
             </p:fieldset>  
 
             
-      <p:dialog header="Car Detail" widgetVar="carDialog"
+      <p:dialog header="Detalhes do Cliente" widgetVar="carDialog"
                       width="250" showEffect="explode" hideEffect="explode">
 
                 <p:dataList id="display"
-                            value="#{tableBean.selectedCars}"
+                            value="#{tabelaClientes.selectedCars}"
                             var="selectedCar" type="definition">
 
-                    Model: #{selectedCar.model}, Year: #{selectedCar.year}      
+                    Nome: #{selectedCar.model}, Idade: #{selectedCar.year}      
 
                 </p:dataList>
             </p:dialog>
