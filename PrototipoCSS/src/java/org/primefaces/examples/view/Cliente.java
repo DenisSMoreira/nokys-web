@@ -16,7 +16,8 @@ public class Cliente {
     private int year;
     private String manufacturer;
     private String color;
-
+    private String total = "15";
+    
    public Cliente(String randomModel, int randomYear, String randomManufacturer, String randomColor) {
         model = randomColor;
         year = randomYear;
@@ -78,6 +79,20 @@ public class Cliente {
      */
     public void setColor(String color) {
         this.color = color;
+    }
+
+    /**
+     * @return the total
+     */
+    public String getTotal() {
+        return total;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(String total) {
+        this.total = total;
     }
 
   

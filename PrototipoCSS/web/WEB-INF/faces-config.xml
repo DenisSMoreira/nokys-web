@@ -32,5 +32,10 @@
             <from-outcome>telaPrincipal</from-outcome>
             <to-view-id>/TelaPrincipal.xhtml</to-view-id>
         </navigation-case>
+         <navigation-case>
+            <from-outcome>contasBancarias</from-outcome>
+            <to-view-id>/ContasBancarias.xhtml</to-view-id>
+        </navigation-case>
+        
     </navigation-rule>
 </faces-config>

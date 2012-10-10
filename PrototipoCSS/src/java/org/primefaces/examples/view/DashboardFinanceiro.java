@@ -26,7 +26,7 @@ public class DashboardFinanceiro  {
     } 
     
     public String forwardClientes(){
-        return "clientes";
+        return "contasBancarias";
     }
 
     public DashboardModel getModel() {  
