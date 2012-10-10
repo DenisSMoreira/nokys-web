@@ -15,7 +15,9 @@
                 <p:messages showDetail="true"  />  
                 <p:commandButton  value="Cadastrar Nova Conta Bancária" icon="ui-icon-document" style="float: right !important"  />  
              
-                <p:dataTable var="car" value="#{contasBancarias.carsSmall}" id="carList" editable="true">  
+                <p:dataTable var="car" value="#{contasBancarias.carsSmall}"   paginator="true" rows="15"  
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                 rowsPerPageTemplate="5,10,15" filteredValue="#{contasBancarias.filteredCars}"  emptyMessage="Não existe nenhum Banco com esse nome!"  id="carList" editable="true">  
 
                     <f:facet name="header">  
                           Contas Bancárias
@@ -24,7 +26,7 @@
                     <p:ajax event="rowEdit" listener="#{contasBancarias.onEdit}" update="@this"/>  
                     <p:ajax event="rowEditCancel" listener="#{contasBancarias.onCancel}" update="@this"/>  
 
-                    <p:column headerText="Banco" style="width:125px">  
+                    <p:column headerText="Banco" style="width:200px"  filterBy="#{car.manufacturer}"  filterOptions="#{contasBancarias.manufacturerOptions}"  filterMatchMode="exact" >  
                         <p:cellEditor>  
                             <f:facet name="output">  
                                 <h:outputText value="#{car.manufacturer}" />  
@@ -96,7 +98,7 @@
                                        background-image: url("/Prototipo/javax.faces.resource/images/ui-icons_217bc0_256x240.png.xhtml?ln=primefaces-redmond");
                                        background-position: -176px -96px;'  />
                     </p:column>  
-                       <p:columnGroup type="footer">  
+                     <p:columnGroup type="footer">  
                         <p:row>  
                             <p:column colspan="2" footerText="Totals:"  
                                             style="text-align:right"  />  
