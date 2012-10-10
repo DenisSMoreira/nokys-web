@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="Template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+     <ui:define name="conteudo">
+
+        <h:panelGrid columns="1" cellspacing="10" cellpadding="5"  >  
+
+            <h:form id="form">  
+
+
+                <p:dashboard id="board"   model="#{dashboardGerencimento.model}"  style="width: 980px;"  >  
+                    <p:ajax event="reorder" listener="#{dashboardGerencimento.handleReorder}" />  
+
+                    <p:panel id="sports" header="Gerenciar Cadastros"  style="width: 300px">   
+                        <p:commandLink value="Clientes" action="#{dashboardCadastro.forwardClientes()}" ></p:commandLink><br />
+                        <p:commandLink value="Fornecedores"></p:commandLink><br />
+                        <p:commandLink value="Produtos"></p:commandLink><br />
+                        <p:commandLink value="Categoria"></p:commandLink>
+                        <p:commandLink value="Categoria"></p:commandLink>
+                    </p:panel>  
+
+                    <p:panel id="finance" header="Gerenciar Lançamentos" style="width: 300px;">  
+                        <p:commandLink value="Contas a Pagar"></p:commandLink><br /> 
+                    </p:panel>  
+
+                    <p:panel id="lifestyle" header="Gerenciar Vendas" style="width: 300px;">  
+                        <p:commandLink value="Vendas"></p:commandLink><br />  
+                    </p:panel>  
+
+                    <p:panel id="weather" header="Gerenciar Relátorios" style="width: 300px;">  
+                        <p:commandLink value="Clientes"></p:commandLink><br />
+                        <p:commandLink value="Fornecedores"></p:commandLink><br />
+                        <p:commandLink value="Produtos"></p:commandLink><br />
+                        <p:commandLink value="Categoria"></p:commandLink>
+                     </p:panel>  
+
+                    <p:panel id="politics" header="Gerenciar Gráficos" style="width: 300px;">  
+                        <p:commandLink value="Clientes"></p:commandLink><br />
+                        <p:commandLink value="Fornecedores"></p:commandLink><br />
+                        <p:commandLink value="Produtos"></p:commandLink><br />
+                        <p:commandLink value="Categoria"></p:commandLink>
+                    </p:panel>  
+                </p:dashboard> 
+
+            </h:form>  
+
+        </h:panelGrid>  
+
+    </ui:define>
+
+</ui:composition>

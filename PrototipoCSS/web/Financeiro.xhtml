@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="Template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:define name="conteudo">
+        <h:panelGrid columns="1" cellspacing="10" cellpadding="5"  >  
+            <h:form id="form">  
+                <p:dashboard id="board"  model="#{dashboardFinanceiro.model}"  style="width: 980px;"  >  
+                    <p:panel id="financeiro" header="Financeiro"  style="width: 300px">   
+                        <p:commandLink value="Contas Bancárias" action="#{dashboardFinanceiro.forwardClientes()}" ></p:commandLink><br />
+                        <p:commandLink value="Centro de Custos"></p:commandLink><br />
+                        <p:commandLink value="Contas á Pagar"></p:commandLink><br />
+                        <p:commandLink value="Contas á Receber"></p:commandLink>
+                        <p:commandLink value="Movimentação Bancária"></p:commandLink>
+                    </p:panel>  
+               </p:dashboard> 
+            </h:form>  
+        </h:panelGrid>  
+    </ui:define>
+
+</ui:composition>
