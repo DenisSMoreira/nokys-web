@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="Template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:define name="conteudo">
+        <h:panelGrid columns="1" cellspacing="10" cellpadding="5"  >  
+            <h:form id="contasBancariasForm">  
+
+                <p:messages showDetail="true"  />  
+                <p:commandButton  value="Cadastrar Novo Custo" icon="ui-icon-document" style="float: right !important"  />  
+             
+                <p:dataTable var="car" value="#{contasBancarias.carsSmall}"   paginator="true" rows="15"  
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                 rowsPerPageTemplate="5,10,15" filteredValue="#{contasBancarias.filteredCars}"  emptyMessage="Não existe nenhum Banco com esse nome!"  id="carList" editable="true">  
+
+                    <f:facet name="header">  
+                          Centro de Custos
+                    </f:facet>  
+
+                    <p:ajax event="rowEdit" listener="#{contasBancarias.onEdit}" update="@this"/>  
+                    <p:ajax event="rowEditCancel" listener="#{contasBancarias.onCancel}" update="@this"/>  
+
+                    <p:column headerText="Nome da Conta" style="width:200px"  filterBy="#{car.manufacturer}"  filterOptions="#{contasBancarias.manufacturerOptions}"  filterMatchMode="exact" >  
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{car.manufacturer}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                              <f:facet name="input">  
+                                <p:inputText value="#{car.manufacturer}" style="width:100%" label="Year"/>  
+                            </f:facet>  
+                            </f:facet>
+                        </p:cellEditor>  
+                    </p:column>  
+
+                    <p:column headerText="Tipo" style="width:125px">  
+                         <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{car.manufacturer}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <h:selectOneMenu value="#{car.manufacturer}" >  
+                                    <f:selectItems value="#{contasBancarias.manufacturers}"  
+                                                   var="man"   
+                                                   itemLabel="#{man}"  
+                                                   itemValue="#{man}" />  
+                                </h:selectOneMenu>  
+                            </f:facet>
+                        </p:cellEditor>  
+                    </p:column>    
+
+                    <p:column headerText="Opções" style="width:85px; alignment-adjust: central">  
+                        <p:rowEditor  />  
+                        
+                         <p:commandLink style='
+                                       display: inline-block;
+                                       text-indent: -99999px;
+                                       overflow: hidden;
+                                       background-repeat: no-repeat;
+                                       width: 15px !important;
+                                       height: 15px !important;
+                                       background-image: url("/Prototipo/javax.faces.resource/images/ui-icons_217bc0_256x240.png.xhtml?ln=primefaces-redmond");
+                                       background-position: -160px -112px;'  />
+                         
+                             <p:commandLink style='
+                                       display: inline-block;
+                                       text-indent: -99999px;
+                                       overflow: hidden;
+                                       background-repeat: no-repeat;
+                                       width: 15px;
+                                       height: 15px;
+                                       background-image: url("/Prototipo/javax.faces.resource/images/ui-icons_217bc0_256x240.png.xhtml?ln=primefaces-redmond");
+                                       background-position: -176px -96px;'  />
+                    </p:column>  
+                    <f:facet name="footer">  
+                        Total de #{contasBancarias.carsSmall.size()} contas.  
+                    </f:facet>
+                    
+                </p:dataTable>  
+
+            </h:form>   
+        </h:panelGrid>  
+    </ui:define>
+
+</ui:composition>

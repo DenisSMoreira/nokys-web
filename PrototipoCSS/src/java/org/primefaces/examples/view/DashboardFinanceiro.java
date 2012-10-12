@@ -28,6 +28,9 @@ public class DashboardFinanceiro  {
     public String forwardClientes(){
         return "contasBancarias";
     }
+    public String forwardCustos(){
+        return "custos";
+    }
 
     public DashboardModel getModel() {  
         return model;  
