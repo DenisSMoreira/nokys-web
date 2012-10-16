@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="Template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:define name="conteudo">
+              <p:commandButton  value="Incluir Conta" icon="ui-icon-document"  style="margin-left: 30px;margin-bottom: 10px;"  />  
+              <p:commandButton  value="Incluir Conta Parcelada" icon="ui-icon-document"  />  
+              <p:commandButton  value="Cancelar Conta" icon="ui-icon-document"   />  
+              
+              <h:panelGrid columns="3" style="margin-left: 30px;">
+                    <p:panel header="Filtrar por  Período:" style="width:430px; margin-top: -83px;" >
+                        <h:outputText value=" De: " />  
+                        <p:calendar value="#{contasBancarias.date3}" id="popupButtonCal" showOn="button" />    
+                        <h:outputText value="#{contasBancarias.date3}" id="popupButtonDate">  
+                            <f:convertDateTime pattern="d/M/yyyy"/>  
+                        </h:outputText> 
+
+                        <h:outputText value=" até:  " />  
+                        <p:calendar value="#{contasBancarias.date3}" id="popupButtonCal2" showOn="button" />    
+                        <h:outputText value="#{contasBancarias.date3}" id="popupButtonDate2">  
+                            <f:convertDateTime pattern="d/M/yyyy"/>  
+                        </h:outputText> 
+
+                    </p:panel>
+                
+              
+                  <p:panel header="Filtrar por Descrição:" style=" margin-top: -83px;">
+                        <p:autoComplete value="#{contasBancarias.selectedMovies}"    effect="slide" completeMethod="#{contasBancarias.complete}" multiple="true"/>  
+                    </p:panel>   
+                
+                    <p:panel header="Filtrar por Status:" style="width:140px;"  >
+                           <p:selectManyCheckbox value="#{contasBancarias.selectedMovies}"  layout="pageDirection"   >  
+                                <f:selectItems value="#{contasBancarias.movies}" />  
+                            </p:selectManyCheckbox>  
+                   </p:panel>  
+          
+                  <p:panel header="Filtrar por numeros de  Documentos:" style="margin-top: -100px; margin-right: -3px" >
+                        <p:autoComplete value="#{contasBancarias.selectedMovies}"  effect="slide" completeMethod="#{contasBancarias.complete}" multiple="true"/>  
+                    </p:panel>
+                              
+       
+                     <h:panelGrid columns="2" >
+                        <p:panel header="Filtrar por  Centro de Custo:" style="width:210px;margin-top: -100px;" >
+                            <p:selectCheckboxMenu value="#{contasBancarias.selectedMovies}" label="Custos Cadastrados" filter="true" filterMatchMode="startsWith" validatorMessage="Não há dados cadastrados." panelStyle="width:220px">  
+                                <f:selectItems value="#{contasBancarias.movies}" />  
+                          </p:selectCheckboxMenu> 
+                        </p:panel>
+                         <p:panel header="Filtrar por  Emissão:" id="mse" style="width:210px;margin-top: -100px;" >
+                           <p:selectBooleanButton  offLabel="Não filtrar por emissão."  onLabel="Efetuar o filtro por emissão " onIcon="ui-icon-check" offIcon="ui-icon-close">  
+                                <p:ajax update="mse" />  
+                            </p:selectBooleanButton>  
+                        </p:panel>
+                     </h:panelGrid>
+                   
+               </h:panelGrid>   
+              <h:panelGrid columns="1" cellspacing="10" cellpadding="5" style="width: 1125px;margin-top: -20px;" >  
+                  
+            <h:form id="contasBancariasForm">  
+
+                <p:messages showDetail="true"  />  
+              
+              
+                <p:dataTable var="car" value="#{contasBancarias.carsSmall}"   paginator="true" rows="15"  
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"  
+                 rowsPerPageTemplate="5,10,15"  id="carList" editable="true">  
+
+                    <f:facet name="header">  
+                          Contas à Pagar
+                    </f:facet>  
+
+                    <p:ajax event="rowEdit" listener="#{contasBancarias.onEdit}" update="@this"/>  
+                    <p:ajax event="rowEditCancel" listener="#{contasBancarias.onCancel}" update="@this"/>  
+                
+                    <p:column headerText="Código"  style="width:125px">  
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{car.year}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{car.year}" style="width:100%" label="Year"/>  
+                            </f:facet>  
+                        </p:cellEditor>  
+                    </p:column> 
+                    
+                    <p:column headerText="Vencimento" style="width:200px" >  
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{car.manufacturer}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <h:selectOneMenu value="#{car.manufacturer}" >  
+                                    <f:selectItems value="#{contasBancarias.manufacturers}"  
+                                                   var="man"   
+                                                   itemLabel="#{man}"  
+                                                   itemValue="#{man}" />  
+                                </h:selectOneMenu>  
+                            </f:facet>
+                        </p:cellEditor>  
+                    </p:column>  
+                    <p:column headerText="Atraso"  style="width:125px">  
+                          <h:outputText value="#{car.year}" />  
+                    </p:column>
+                    <p:column headerText="Data do Pagamento" style="width:125px">  
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{car.year}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{car.year}" style="width:100%" label="Year"/>  
+                            </f:facet>  
+                        </p:cellEditor>  
+                    </p:column>  
+
+                    <p:column headerText="Valor Original"  style="width:125px">  
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{car.year}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{car.year}" style="width:100%" label="Year"/>  
+                            </f:facet>  
+                        </p:cellEditor>  
+                    </p:column>  
+                    <p:column headerText="Valor Atualizado"  style="width:125px">  
+                        <p:cellEditor>  
+                           <f:facet name="output">  
+                                <h:outputText value="#{car.year}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{car.year}" style="width:100%" label="Year"/>  
+                            </f:facet>  
+                        </p:cellEditor>  
+                    </p:column>  
+                    <p:column headerText="Descrição"  style="width:125px">  
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{car.year}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{car.year}" style="width:100%" label="Year"/>  
+                            </f:facet>  
+                        </p:cellEditor>  
+                    </p:column> 
+                     <p:column headerText="Detalhamento"  style="width:125px">  
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{car.year}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{car.year}" style="width:100%" label="Year"/>  
+                            </f:facet>  
+                        </p:cellEditor>  
+                    </p:column> 
+                    <p:column headerText="ST"  style="width:125px">  
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{car.year}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{car.year}" style="width:100%" label="Year"/>  
+                            </f:facet>  
+                        </p:cellEditor>  
+                    </p:column>
+                    
+                    <p:column headerText="Opções" style="width:85px; alignment-adjust: central">  
+                        <p:rowEditor  />  
+                        
+                         <p:commandLink style='
+                                       display: inline-block;
+                                       text-indent: -99999px;
+                                       overflow: hidden;
+                                       background-repeat: no-repeat;
+                                       width: 15px !important;
+                                       height: 15px !important;
+                                       background-image: url("/Prototipo/javax.faces.resource/images/ui-icons_217bc0_256x240.png.xhtml?ln=primefaces-redmond");
+                                       background-position: -160px -112px;'  />
+                         
+                             <p:commandLink style='
+                                       display: inline-block;
+                                       text-indent: -99999px;
+                                       overflow: hidden;
+                                       background-repeat: no-repeat;
+                                       width: 15px;
+                                       height: 15px;
+                                       background-image: url("/Prototipo/javax.faces.resource/images/ui-icons_217bc0_256x240.png.xhtml?ln=primefaces-redmond");
+                                       background-position: -176px -96px;'  />
+                    </p:column>
+                     <p:columnGroup type="footer">  
+                        <p:row>  
+                            <p:column colspan="4" footerText="Totals:"  
+                                            style="text-align:right"  />  
+
+                            <p:column footerText="R$: #{contasBancarias.carsSmall.size()}" />  
+
+                            <p:column footerText="R$: #{contasBancarias.carsSmall.hashCode()}" />  
+                            <p:column  colspan="4"  />
+                        </p:row>  
+                    </p:columnGroup> 
+                    <f:facet name="footer">  
+                        Total de #{contasBancarias.carsSmall.size()} contas bancárias.  
+                    </f:facet>
+                    
+                </p:dataTable>  
+
+            </h:form>   
+        </h:panelGrid>  
+    </ui:define>
+
+</ui:composition>
