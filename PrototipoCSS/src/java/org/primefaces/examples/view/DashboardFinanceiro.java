@@ -31,7 +31,9 @@ public class DashboardFinanceiro  {
     public String forwardCustos(){
         return "custos";
     }
-
+   public String forwardContasPagar(){
+        return "contasPagar";
+    }
     public DashboardModel getModel() {  
         return model;  
     }  

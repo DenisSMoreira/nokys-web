@@ -26,7 +26,7 @@
                     <p:ajax event="rowEdit" listener="#{contasBancarias.onEdit}" update="@this"/>  
                     <p:ajax event="rowEditCancel" listener="#{contasBancarias.onCancel}" update="@this"/>  
 
-                    <p:column headerText="Nome da Conta" style="width:200px"  filterBy="#{car.manufacturer}"  filterOptions="#{contasBancarias.manufacturerOptions}"  filterMatchMode="exact" >  
+                    <p:column headerText="Nome da Conta" style="width:200px"  filterBy="#{car.manufacturer}"  >  
                         <p:cellEditor>  
                             <f:facet name="output">  
                                 <h:outputText value="#{car.manufacturer}" />  
@@ -79,7 +79,7 @@
                                        background-position: -176px -96px;'  />
                     </p:column>  
                     <f:facet name="footer">  
-                        Total de #{contasBancarias.carsSmall.size()} contas.  
+                        Total de #{contasBancarias.carsSmall.size()} custos.  
                     </f:facet>
                     
                 </p:dataTable>  
