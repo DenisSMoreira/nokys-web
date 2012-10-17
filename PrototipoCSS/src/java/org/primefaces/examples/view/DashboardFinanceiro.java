@@ -34,6 +34,9 @@ public class DashboardFinanceiro  {
    public String forwardContasPagar(){
         return "contasPagar";
     }
+            public String forwardContasReceber(){
+        return "contasReceber";
+    }
     public DashboardModel getModel() {  
         return model;  
     }  

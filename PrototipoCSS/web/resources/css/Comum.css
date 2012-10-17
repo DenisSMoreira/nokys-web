@@ -11,3 +11,13 @@ body {
     font-size: 1.005em !important;
     font-weight: 400 !important;
 }
+
+.exportXML{
+    background-image: url("images/xml.png");
+}
+.exportPDF{
+    background-image: url("images/xml.png");
+}
+#exportExcel{
+    background-image: url("images/xml.png");
+}

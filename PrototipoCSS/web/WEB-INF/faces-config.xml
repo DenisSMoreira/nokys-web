@@ -21,6 +21,10 @@
             <to-view-id>/ContasAPagar.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+            <from-outcome>contasReceber</from-outcome>
+            <to-view-id>/ContasAReceber.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
             <from-outcome>noticias</from-outcome>
             <to-view-id>/Noticias.xhtml</to-view-id>
         </navigation-case>
