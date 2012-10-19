@@ -28,7 +28,8 @@ public class ContasBancarias implements Serializable {
     private List<Cliente> filteredCars;
     private Date date3; 
     private Map<String,String> movies; 
-    private List<String> selectedMovies; 
+    private List<String> selectedMovies;
+    
     
     public ContasBancarias(){
           carsSmall = new ArrayList<Cliente>();

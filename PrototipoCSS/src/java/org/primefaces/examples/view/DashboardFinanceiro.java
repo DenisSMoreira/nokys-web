@@ -31,6 +31,10 @@ public class DashboardFinanceiro  {
     public String forwardCustos(){
         return "custos";
     }
+     public String forwardMovimentacaoBancaria(){
+        return "movimentacaoBancaria";
+    }
+    
    public String forwardContasPagar(){
         return "contasPagar";
     }
@@ -40,4 +44,6 @@ public class DashboardFinanceiro  {
     public DashboardModel getModel() {  
         return model;  
     }  
+    
+    
 }  
