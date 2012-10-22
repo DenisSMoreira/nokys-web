@@ -24,7 +24,7 @@ public class UsuarioWizard {
     private Usuario user = new Usuario();  
       
     private boolean skip;  
-      
+    private int number;
     private static final Logger logger = Logger.getLogger(UsuarioWizard.class.getName());  
   
     public Usuario getUser() {  
@@ -62,4 +62,18 @@ public class UsuarioWizard {
             return event.getNewStep();  
         }  
     }  
+
+    /**
+     * @return the number
+     */
+    public int getNumber() {
+        return number;
+    }
+
+    /**
+     * @param number the number to set
+     */
+    public void setNumber(int number) {
+        this.number = number;
+    }
 }

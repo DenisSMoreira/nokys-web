@@ -17,22 +17,55 @@
             <p:wizard widgetVar="wiz"  
                       flowListener="#{usuarioWizard.onFlowProcess}">  
 
+                <p:tab id="tipo" title="Tipo do Cliente">  
+
+                    <p:panel header="Tipo do Cliente">  
+
+                        <p:messages closable="true" />   
+
+                        <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
+                             <h:outputText value="Tipo: " />  
+                              <p:selectOneRadio id="options" value="#{usuarioWizard.number}">  
+                                  <f:selectItem itemLabel="Cliente Pessoa Física" itemValue="1" />  
+                                  <f:selectItem itemLabel="Cliente Pessoa Juridica" itemValue="2" />  
+                              </p:selectOneRadio>  
+                        </h:panelGrid>  
+                    </p:panel>  
+                </p:tab>  
+                
                 <p:tab id="personal" title="Dados Pessoais">  
 
                     <p:panel header="Detalhes do cliente">  
 
                         <p:messages closable="true" />   
 
-                        <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
+                        <h:panelGrid columns="2" columnClasses="label, value" rendered="#{usuarioWizard.number == 1}" styleClass="grid">  
                             <h:outputText value="Nome: *" />  
-                            <p:inputText required="false" label="Nome" requiredMessage="Campo 'Nome' de preenchimento obrigátorio."  
+                            <p:inputText required="true" label="Nome"  requiredMessage="Campo 'Nome' de preenchimento obrigátorio."  
                                          value="#{usuarioWizard.user.firstname}" />  
 
                             <h:outputText value="Sobrenome: *" />  
-                            <p:inputText required="false" label="Sobrenome"  requiredMessage="Campo 'Sobrenome' de preenchimento obrigátorio."  
+                            <p:inputText required="true" label="Sobrenome"  requiredMessage="Campo 'Sobrenome' de preenchimento obrigátorio."  
                                          value="#{usuarioWizard.user.lastname}" />  
 
                             <h:outputText value="Idade: " />  
+                            <p:inputText value="#{usuarioWizard.user.age}" />  
+
+                            <h:outputText value="Finalizar: " />  
+                            <p:selectBooleanCheckbox value="#{usuarioWizard.skip}"></p:selectBooleanCheckbox>  
+
+                        </h:panelGrid>  
+                        
+                        <h:panelGrid columns="2" columnClasses="label, value"  rendered="#{usuarioWizard.number == 2}"  styleClass="grid">  
+                            <h:outputText value="Empresa: *" />  
+                            <p:inputText required="true" label="Nome" requiredMessage="Campo 'Nome' de preenchimento obrigátorio."  
+                                         value="#{usuarioWizard.user.firstname}" />  
+
+                            <h:outputText value="Nome Fantasia: *" />  
+                            <p:inputText required="true" label="Sobrenome"  requiredMessage="Campo 'Sobrenome' de preenchimento obrigátorio."  
+                                         value="#{usuarioWizard.user.lastname}" />  
+
+                            <h:outputText value="CNPJ: " />  
                             <p:inputText value="#{usuarioWizard.user.age}" />  
 
                             <h:outputText value="Finalizar: " />  
